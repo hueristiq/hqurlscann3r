@@ -30,7 +30,7 @@ func UpdateOrDownload(file string) (err error) {
 	}
 	defer paramsFile.Close()
 
-	res, err := http.Get("https://raw.githubusercontent.com/drsigned/sigurlx/main/static/params.json")
+	res, err := http.Get("https://raw.githubusercontent.com/signedsecurity/sigurlscann3r/main/static/params.json")
 	if err != nil {
 		return err
 	}
