@@ -1,0 +1,1238 @@
+[
+    {
+        "param": "access",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "account",
+        "risks": [
+            "idor"
+        ]
+    },
+    {
+        "param": "action",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "activity",
+        "risks": [
+            "ssti"
+        ]
+    },
+    {
+        "param": "adm",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "admin",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "alter",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "api",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "api_key",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "arg",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "begindate",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "cli",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "csrf_token",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "board",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "callback",
+        "risks": [
+            "open_redirect",
+            "xss",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "cat",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "categoryid",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "cfg",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "clone",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "checkout",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "checkout_url",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "cmd",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "code",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "column",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "command",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "conf",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "content",
+        "risks": [
+            "lfi",
+            "ssti"
+        ]
+    },
+    {
+        "param": "continue",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "create",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "daemon",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "data",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "date",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "dbg",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "debug",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "delete",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "dest",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "destination",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "detail",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "dir",
+        "risks": [
+            "lfi",
+            "rce",
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "disable",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "do",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "doc",
+        "risks": [
+            "idor",
+            "lfi",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "document",
+        "risks": [
+            "lfi",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "domain",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "download",
+        "risks": [
+            "lfi",
+            "rce"
+        ]
+    },
+    {
+        "param": "edit",
+        "risks": [
+            "idor",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "emailto",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "enable",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "enddate",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "exe",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "exec",
+        "risks": [
+            "rce",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "execute",
+        "risks": [
+            "rce",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "email",
+        "risks": [
+            "idor",
+            "xss"
+        ]
+    },
+    {
+        "param": "feature",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "feed",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "fetch",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "field",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "file",
+        "risks": [
+            "lfi",
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "filename",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "file_name",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "file_url",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "filter",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "folder",
+        "risks": [
+            "lfi",
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "folder_url",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "forward",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "from",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "from_url",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "func",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "function",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "go",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "goto",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "grant",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "group",
+        "risks": [
+            "idor"
+        ]
+    },
+    {
+        "param": "host",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "html",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "id",
+        "risks": [
+            "idor",
+            "xss",
+            "sqli",
+            "ssti"
+        ]
+    },
+    {
+        "param": "image_url",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "imagine",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "img",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "img_url",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "inc",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "include",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "ip",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "item",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "jsonp",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "jump",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "key",
+        "risks": [
+            "idor",
+            "xss"
+        ]
+    },
+    {
+        "param": "keyword",
+        "risks": [
+            "xss",
+            "sqli"
+        ]
+    },
+    {
+        "param": "keywords",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "l",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "lang",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "layout",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "list_type",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "locate",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "load",
+        "risks": [
+            "rce",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "load_file",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "load_url",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "log",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "login_url",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "logout",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "make",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "mod",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "modify",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "module",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "month",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "name",
+        "risks": [
+            "lfi",
+            "xss",
+            "sqli",
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "navigation",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "next",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "next_page",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "no",
+        "risks": [
+            "idor"
+        ]
+    },
+    {
+        "param": "number",
+        "risks": [
+            "idor",
+            "sqli"
+        ]
+    },
+    {
+        "param": "open",
+        "risks": [
+            "ssrf",
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "option",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "order",
+        "risks": [
+            "idor",
+            "sqli"
+        ]
+    },
+    {
+        "param": "out",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "p",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "page",
+        "risks": [
+            "lfi",
+            "xss",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "page_id",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "page_url",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "params",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "password",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "path",
+        "risks": [
+            "lfi",
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "payload",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "pdf",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "pg",
+        "risks": [
+            "lfi",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "php_path",
+        "risks": [
+            "lfi",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "ping",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "port",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "prefix",
+        "risks": [
+            "lfi"
+        ]
+    },
+    {
+        "param": "preview",
+        "risks": [
+            "ssti"
+        ]
+    },
+    {
+        "param": "print",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "profile",
+        "risks": [
+            "idor"
+        ]
+    },
+    {
+        "param": "process",
+        "risks": [
+            "rce",
+            "sqli"
+        ]
+    },
+    {
+        "param": "q",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "query",
+        "risks": [
+            "rce",
+            "xss",
+            "sqli"
+        ]
+    },
+    {
+        "param": "read",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "redir",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "redirect",
+        "risks": [
+            "open_redirect",
+            "ssrf",
+            "ssti"
+        ]
+    },
+    {
+        "param": "redirect_to",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "redirect_uri",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "redirect_url",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "reference",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "reg",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "rename",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "return",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "return_path",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "return_to",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "returnTo",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "return_url",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "req",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "report",
+        "risks": [
+            "idor",
+            "sqli"
+        ]
+    },
+    {
+        "param": "reset",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "results",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "role",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "root",
+        "risks": [
+            "lfi",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "row",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "rt",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "run",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "rurl",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "s",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "search",
+        "risks": [
+            "xss",
+            "sqli"
+        ]
+    },
+    {
+        "param": "sel",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "select",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "shell",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "show",
+        "risks": [
+            "lfi",
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "site",
+        "risks": [
+            "lfi",
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "sleep",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "sort",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "step",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "string",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "style",
+        "risks": [
+            "lfi",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "table",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "target",
+        "risks": [
+            "open_redirect"
+        ]
+    },
+    {
+        "param": "template",
+        "risks": [
+            "lfi",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "terms",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "test",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "to",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "toggle",
+        "risks": [
+            "ssrf"
+        ]
+    },
+    {
+        "param": "token",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "type",
+        "risks": [
+            "lfi",
+            "xss"
+        ]
+    },
+    {
+        "param": "update",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "upload",
+        "risks": [
+            "rce"
+        ]
+    },
+    {
+        "param": "unsubscribe_token",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "uri",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "url",
+        "risks": [
+            "open_redirect",
+            "xss",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "user",
+        "risks": [
+            "idor",
+            "sqli"
+        ]
+    },
+    {
+        "param": "username",
+        "risks": [
+            "xss"
+        ]
+    },
+    {
+        "param": "val",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "validate",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "view",
+        "risks": [
+            "lfi",
+            "open_redirect",
+            "xss",
+            "sqli",
+            "ssti",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "where",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "window",
+        "risks": [
+            "open_redirect",
+            "ssrf"
+        ]
+    },
+    {
+        "param": "year",
+        "risks": [
+            "xss"
+        ]
+    }
+]
