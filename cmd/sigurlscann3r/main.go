@@ -12,7 +12,7 @@ import (
 
 	"github.com/logrusorgru/aurora/v3"
 	"github.com/signedsecurity/sigurlscann3r/pkg/params"
-	"github.com/signedsecurity/sigurlscann3r/pkg/sigurlx"
+	"github.com/signedsecurity/sigurlscann3r/pkg/sigurlscann3r"
 )
 
 type options struct {
@@ -28,7 +28,7 @@ type options struct {
 var (
 	co options
 	au aurora.Aurora
-	ro sigurlx.Options
+	ro sigurlscann3r.Options
 )
 
 func banner() {
@@ -80,7 +80,7 @@ func init() {
 
 		h += "\nOUTPUT OPTIONS:\n"
 		h += "  -nC                       no color mode\n"
-		h += "  -oJ                       JSON output file (default: ./sigurlx.json)\n"
+		h += "  -oJ                       JSON output file (default: ./sigurlscann3r.json)\n"
 		h += "  -v                        verbose mode\n"
 
 		fmt.Fprint(os.Stderr, h)
@@ -147,7 +147,7 @@ func main() {
 	mutex := &sync.Mutex{}
 	wg := &sync.WaitGroup{}
 
-	var output sigurlx.Results
+	var output sigurlscann3r.Results
 
 	for i := 0; i < co.threads; i++ {
 		wg.Add(1)
@@ -157,7 +157,7 @@ func main() {
 		go func() {
 			defer wg.Done()
 
-			runner, err := sigurlx.New(&ro)
+			runner, err := sigurlscann3r.New(&ro)
 			if err != nil {
 				log.Fatalln(err)
 			}

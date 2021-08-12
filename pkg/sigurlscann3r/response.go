@@ -1,4 +1,4 @@
-package sigurlx
+package sigurlscann3r
 
 import (
 	"reflect"

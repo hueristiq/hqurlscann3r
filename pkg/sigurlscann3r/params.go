@@ -1,4 +1,4 @@
-package sigurlx
+package sigurlscann3r
 
 import (
 	"encoding/json"
@@ -10,26 +10,26 @@ import (
 	"github.com/signedsecurity/sigurlscann3r/pkg/params"
 )
 
-func (sigurlx *Sigurlx) initParams() error {
+func (sigurlscann3r *Sigurlx) initParams() error {
 	raw, err := ioutil.ReadFile(params.File())
 	if err != nil {
 		return err
 	}
 
-	if err = json.Unmarshal(raw, &sigurlx.Params); err != nil {
+	if err = json.Unmarshal(raw, &sigurlscann3r.Params); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (sigurlx *Sigurlx) CommonVulnParamsProbe(query url.Values) ([]CommonVulnParam, error) {
+func (sigurlscann3r *Sigurlx) CommonVulnParamsProbe(query url.Values) ([]CommonVulnParam, error) {
 	var commonVulnParams []CommonVulnParam
 
 	for parameter := range query {
-		for i := range sigurlx.Params {
-			if strings.ToLower(sigurlx.Params[i].Param) == strings.ToLower(parameter) {
-				commonVulnParams = append(commonVulnParams, sigurlx.Params[i])
+		for i := range sigurlscann3r.Params {
+			if strings.ToLower(sigurlscann3r.Params[i].Param) == strings.ToLower(parameter) {
+				commonVulnParams = append(commonVulnParams, sigurlscann3r.Params[i])
 
 				break
 			}
@@ -39,10 +39,10 @@ func (sigurlx *Sigurlx) CommonVulnParamsProbe(query url.Values) ([]CommonVulnPar
 	return commonVulnParams, nil
 }
 
-func (sigurlx *Sigurlx) ReflectedParamsProbe(parsedURL *url.URL, query url.Values, res Response) ([]ReflectedParam, error) {
+func (sigurlscann3r *Sigurlx) ReflectedParamsProbe(parsedURL *url.URL, query url.Values, res Response) ([]ReflectedParam, error) {
 	var reflectedParams []ReflectedParam
 
-	reflected, err := sigurlx.checkReflection(parsedURL.String(), query, res)
+	reflected, err := sigurlscann3r.checkReflection(parsedURL.String(), query, res)
 	if err != nil {
 		return reflectedParams, err
 	}
@@ -54,7 +54,7 @@ func (sigurlx *Sigurlx) ReflectedParamsProbe(parsedURL *url.URL, query url.Value
 			var reflectedCharacters []string
 
 			for _, char := range characters {
-				wasReflected, err := sigurlx.checkAppend(parsedURL, query, parameter, "aprefix"+char+"asuffix")
+				wasReflected, err := sigurlscann3r.checkAppend(parsedURL, query, parameter, "aprefix"+char+"asuffix")
 				if err != nil {
 					continue
 				}
@@ -94,11 +94,11 @@ func getQuery(URL string) (url.Values, error) {
 	return query, nil
 }
 
-func (sigurlx *Sigurlx) checkReflection(URL string, query url.Values, res Response) ([]string, error) {
+func (sigurlscann3r *Sigurlx) checkReflection(URL string, query url.Values, res Response) ([]string, error) {
 	var reflected []string
 
 	if res.IsEmpty() {
-		res, _ = sigurlx.DoHTTP(URL)
+		res, _ = sigurlscann3r.DoHTTP(URL)
 	}
 
 	if res.StatusCode >= http.StatusMultipleChoices && res.StatusCode < http.StatusBadRequest {
@@ -122,13 +122,13 @@ func (sigurlx *Sigurlx) checkReflection(URL string, query url.Values, res Respon
 	return reflected, nil
 }
 
-func (sigurlx *Sigurlx) checkAppend(parsedURL *url.URL, query url.Values, param, suffix string) (bool, error) {
+func (sigurlscann3r *Sigurlx) checkAppend(parsedURL *url.URL, query url.Values, param, suffix string) (bool, error) {
 	val := query.Get(param)
 
 	query.Set(param, val+suffix)
 	parsedURL.RawQuery = query.Encode()
 
-	reflected, err := sigurlx.checkReflection(parsedURL.String(), query, Response{})
+	reflected, err := sigurlscann3r.checkReflection(parsedURL.String(), query, Response{})
 	if err != nil {
 		return false, err
 	}

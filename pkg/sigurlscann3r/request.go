@@ -1,4 +1,4 @@
-package sigurlx
+package sigurlscann3r
 
 import (
 	"crypto/tls"
@@ -10,10 +10,10 @@ import (
 	"unicode/utf8"
 )
 
-func (sigurlx *Sigurlx) initClient() error {
+func (sigurlscann3r *Sigurlx) initClient() error {
 	tr := &http.Transport{
 		DialContext: (&net.Dialer{
-			Timeout:   time.Duration(sigurlx.Options.Timeout) * time.Second,
+			Timeout:   time.Duration(sigurlscann3r.Options.Timeout) * time.Second,
 			KeepAlive: time.Second,
 		}).DialContext,
 		TLSClientConfig: &tls.Config{
@@ -21,8 +21,8 @@ func (sigurlx *Sigurlx) initClient() error {
 		},
 	}
 
-	if sigurlx.Options.HTTPProxy != "" {
-		if proxyURL, err := url.Parse(sigurlx.Options.HTTPProxy); err == nil {
+	if sigurlscann3r.Options.HTTPProxy != "" {
+		if proxyURL, err := url.Parse(sigurlscann3r.Options.HTTPProxy); err == nil {
 			tr.Proxy = http.ProxyURL(proxyURL)
 		}
 	}
@@ -31,11 +31,11 @@ func (sigurlx *Sigurlx) initClient() error {
 		return http.ErrUseLastResponse
 	}
 
-	if sigurlx.Options.FollowRedirects {
+	if sigurlscann3r.Options.FollowRedirects {
 		re = nil
 	}
 
-	if sigurlx.Options.FollowHostRedirects {
+	if sigurlscann3r.Options.FollowHostRedirects {
 		re = func(redirectedRequest *http.Request, previousRequest []*http.Request) error {
 			newHost := redirectedRequest.URL.Host
 			oldHost := previousRequest[0].URL.Host
@@ -48,8 +48,8 @@ func (sigurlx *Sigurlx) initClient() error {
 		}
 	}
 
-	sigurlx.Client = &http.Client{
-		Timeout:       time.Duration(sigurlx.Options.Timeout) * time.Second,
+	sigurlscann3r.Client = &http.Client{
+		Timeout:       time.Duration(sigurlscann3r.Options.Timeout) * time.Second,
 		Transport:     tr,
 		CheckRedirect: re,
 	}
@@ -57,10 +57,10 @@ func (sigurlx *Sigurlx) initClient() error {
 	return nil
 }
 
-func (sigurlx *Sigurlx) DoHTTP(URL string) (Response, error) {
+func (sigurlscann3r *Sigurlx) DoHTTP(URL string) (Response, error) {
 	var response Response
 
-	res, err := sigurlx.httpRequest(URL, http.MethodGet, sigurlx.Client)
+	res, err := sigurlscann3r.httpRequest(URL, http.MethodGet, sigurlscann3r.Client)
 	if err != nil {
 		return response, err
 	}
@@ -87,13 +87,13 @@ func (sigurlx *Sigurlx) DoHTTP(URL string) (Response, error) {
 	return response, nil
 }
 
-func (sigurlx *Sigurlx) httpRequest(URL string, method string, client *http.Client) (res *http.Response, err error) {
+func (sigurlscann3r *Sigurlx) httpRequest(URL string, method string, client *http.Client) (res *http.Response, err error) {
 	req, err := http.NewRequest(method, URL, nil)
 	if err != nil {
 		return res, err
 	}
 
-	req.Header.Set("User-Agent", sigurlx.Options.UserAgent)
+	req.Header.Set("User-Agent", sigurlscann3r.Options.UserAgent)
 
 	res, err = client.Do(req)
 	if err != nil {

@@ -1,4 +1,4 @@
-package sigurlx
+package sigurlscann3r
 
 import (
 	"net/http"
@@ -20,16 +20,16 @@ type Sigurlx struct {
 }
 
 func New(options *Options) (Sigurlx, error) {
-	sigurlx := Sigurlx{}
-	sigurlx.Options = options
-	sigurlx.initCategories()
-	sigurlx.initParams()
-	sigurlx.initClient()
+	sigurlscann3r := Sigurlx{}
+	sigurlscann3r.Options = options
+	sigurlscann3r.initCategories()
+	sigurlscann3r.initParams()
+	sigurlscann3r.initClient()
 
-	return sigurlx, nil
+	return sigurlscann3r, nil
 }
 
-func (sigurlx *Sigurlx) Process(URL string) (result Result, err error) {
+func (sigurlscann3r *Sigurlx) Process(URL string) (result Result, err error) {
 	var res Response
 
 	parsedURL, err := url.Parse(URL)
@@ -39,11 +39,11 @@ func (sigurlx *Sigurlx) Process(URL string) (result Result, err error) {
 
 	result.URL = parsedURL.String()
 
-	if result.Category, err = sigurlx.categorize(URL); err != nil {
+	if result.Category, err = sigurlscann3r.categorize(URL); err != nil {
 		return result, err
 	}
 
-	if res, err = sigurlx.DoHTTP(parsedURL.String()); err != nil {
+	if res, err = sigurlscann3r.DoHTTP(parsedURL.String()); err != nil {
 		return result, err
 	}
 
@@ -59,15 +59,15 @@ func (sigurlx *Sigurlx) Process(URL string) (result Result, err error) {
 
 	if len(query) > 0 {
 		if result.Category == "endpoint" {
-			if result.CommonVulnParams, err = sigurlx.CommonVulnParamsProbe(query); err != nil {
+			if result.CommonVulnParams, err = sigurlscann3r.CommonVulnParamsProbe(query); err != nil {
 				return result, err
 			}
 
 			if res.IsEmpty() {
-				res, _ = sigurlx.DoHTTP(parsedURL.String())
+				res, _ = sigurlscann3r.DoHTTP(parsedURL.String())
 			}
 
-			if result.ReflectedParams, err = sigurlx.ReflectedParamsProbe(parsedURL, query, res); err != nil {
+			if result.ReflectedParams, err = sigurlscann3r.ReflectedParamsProbe(parsedURL, query, res); err != nil {
 				return result, err
 			}
 		}
