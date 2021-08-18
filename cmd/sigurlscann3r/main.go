@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/logrusorgru/aurora/v3"
+	"github.com/signedsecurity/sigurlscann3r/internal/configuration"
 	"github.com/signedsecurity/sigurlscann3r/pkg/params"
 	"github.com/signedsecurity/sigurlscann3r/pkg/sigurlscann3r"
 )
@@ -28,18 +29,11 @@ type options struct {
 var (
 	co options
 	au aurora.Aurora
-	ro sigurlscann3r.Options
+	ro configuration.Options
 )
 
 func banner() {
-	fmt.Fprintln(os.Stderr, aurora.BrightBlue(`
-     _                  _                           _____
- ___(_) __ _ _   _ _ __| |___  ___ __ _ _ __  _ __ |___ / _ __
-/ __| |/ _`+"`"+` | | | | '__| / __|/ __/ _`+"`"+` | '_ \| '_ \  |_ \| '__|
-\__ \ | (_| | |_| | |  | \__ \ (_| (_| | | | | | | |___) | |
-|___/_|\__, |\__,_|_|  |_|___/\___\__,_|_| |_|_| |_|____/|_| v1.0.0
-       |___/   
-`).Bold())
+	fmt.Fprintln(os.Stderr, aurora.BrightBlue(configuration.BANNER).Bold())
 }
 
 func init() {

@@ -4,12 +4,14 @@ import (
 	"net/http"
 	"net/url"
 	"regexp"
+
+	"github.com/signedsecurity/sigurlscann3r/internal/configuration"
 )
 
 type Sigurlx struct {
 	Client       *http.Client
 	Params       []CommonVulnParam
-	Options      *Options
+	Options      *configuration.Options
 	JSRegex      *regexp.Regexp
 	DOCRegex     *regexp.Regexp
 	DATARegex    *regexp.Regexp
@@ -19,7 +21,7 @@ type Sigurlx struct {
 	DOMXSSRegex  *regexp.Regexp
 }
 
-func New(options *Options) (Sigurlx, error) {
+func New(options *configuration.Options) (Sigurlx, error) {
 	sigurlscann3r := Sigurlx{}
 	sigurlscann3r.Options = options
 	sigurlscann3r.initCategories()

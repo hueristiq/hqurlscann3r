@@ -1,6 +1,7 @@
-package sigurlscann3r
+package configuration
 
 import (
+	"fmt"
 	"math/rand"
 	"time"
 )
@@ -12,6 +13,21 @@ type Options struct {
 	Timeout             int
 	UserAgent           string
 }
+
+const (
+	VERSION = "1.0.0"
+)
+
+var (
+	BANNER string = fmt.Sprintf(`
+     _                  _                           _____
+ ___(_) __ _ _   _ _ __| |___  ___ __ _ _ __  _ __ |___ / _ __
+/ __| |/ _`+"`"+` | | | | '__| / __|/ __/ _`+"`"+` | '_ \| '_ \  |_ \| '__|
+\__ \ | (_| | |_| | |  | \__ \ (_| (_| | | | | | | |___) | |
+|___/_|\__, |\__,_|_|  |_|___/\___\__,_|_| |_|_| |_|____/|_| %s
+       |___/
+`, VERSION)
+)
 
 func (options *Options) Parse() {
 	if options.UserAgent == "" {
