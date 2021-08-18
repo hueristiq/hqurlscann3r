@@ -98,6 +98,12 @@
         ]
     },
     {
+        "param": "category",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
         "param": "categoryid",
         "risks": [
             "xss"
@@ -107,6 +113,12 @@
         "param": "cfg",
         "risks": [
             "ssrf"
+        ]
+    },
+    {
+        "param": "class",
+        "risks": [
+            "sqli"
         ]
     },
     {
@@ -193,7 +205,8 @@
     {
         "param": "date",
         "risks": [
-            "lfi"
+            "lfi",
+            "sqli"
         ]
     },
     {
@@ -239,7 +252,8 @@
             "lfi",
             "rce",
             "open_redirect",
-            "ssrf"
+            "ssrf",
+            "sqli"
         ]
     },
     {
@@ -365,7 +379,8 @@
         "risks": [
             "lfi",
             "open_redirect",
-            "ssrf"
+            "ssrf",
+            "sqli"
         ]
     },
     {
@@ -404,6 +419,12 @@
         "param": "folder_url",
         "risks": [
             "open_redirect"
+        ]
+    },
+    {
+        "param": "form",
+        "risks": [
+            "sqli"
         ]
     },
     {
@@ -528,7 +549,14 @@
     {
         "param": "item",
         "risks": [
-            "xss"
+            "xss",
+            "sqli"
+        ]
+    },
+    {
+        "param": "join",
+        "risks": [
+            "sqli"
         ]
     },
     {
@@ -572,7 +600,8 @@
     {
         "param": "lang",
         "risks": [
-            "xss"
+            "xss",
+            "sqli"
         ]
     },
     {
@@ -631,9 +660,21 @@
         ]
     },
     {
+        "param": "main",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
         "param": "make",
         "risks": [
             "ssrf"
+        ]
+    },
+    {
+        "param": "menu",
+        "risks": [
+            "sqli"
         ]
     },
     {
@@ -671,10 +712,22 @@
         ]
     },
     {
+        "param": "nav",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
         "param": "navigation",
         "risks": [
             "open_redirect",
             "ssrf"
+        ]
+    },
+    {
+        "param": "news",
+        "risks": [
+            "sqli"
         ]
     },
     {
@@ -741,7 +794,8 @@
         "risks": [
             "lfi",
             "xss",
-            "ssrf"
+            "ssrf",
+            "sqli"
         ]
     },
     {
@@ -899,6 +953,12 @@
         ]
     },
     {
+        "param": "ref",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
         "param": "reference",
         "risks": [
             "open_redirect",
@@ -909,6 +969,12 @@
         "param": "reg",
         "risks": [
             "rce"
+        ]
+    },
+    {
+        "param": "region",
+        "risks": [
+            "sqli"
         ]
     },
     {
@@ -1120,6 +1186,18 @@
         ]
     },
     {
+        "param": "thread",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
+        "param": "title",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
         "param": "to",
         "risks": [
             "open_redirect",
@@ -1139,10 +1217,17 @@
         ]
     },
     {
+        "param": "topic",
+        "risks": [
+            "sqli"
+        ]
+    },
+    {
         "param": "type",
         "risks": [
             "lfi",
-            "xss"
+            "xss",
+            "sqli"
         ]
     },
     {
@@ -1175,7 +1260,8 @@
         "risks": [
             "open_redirect",
             "xss",
-            "ssrf"
+            "ssrf",
+            "sqli"
         ]
     },
     {
