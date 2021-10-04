@@ -75,29 +75,25 @@ sigurlscann3r -h
  ___(_) __ _ _   _ _ __| |___  ___ __ _ _ __  _ __ |___ / _ __
 / __| |/ _` | | | | '__| / __|/ __/ _` | '_ \| '_ \  |_ \| '__|
 \__ \ | (_| | |_| | |  | \__ \ (_| (_| | | | | | | |___) | |
-|___/_|\__, |\__,_|_|  |_|___/\___\__,_|_| |_|_| |_|____/|_| v1.0.0
+|___/_|\__, |\__,_|_|  |_|___/\___\__,_|_| |_|_| |_|____/|_| 1.0.0
        |___/
 
 USAGE:
   sigurlscann3r [OPTIONS]
 
-GENERAL OPTIONS:
-  -iL                       input urls list (use `-iL -` to read from stdin)
-  -threads                  number concurrent threads (default: 20)
-  -update-params            update params file
-
-HTTP OPTIONS:
-  -delay                    delay between requests (default: 100ms)
-  -follow-redirects         follow redirects (default: false)
-  -follow-host-redirects    follow internal redirects i.e, same host redirects (default: false)
-  -http-proxy               HTTP Proxy URL
-  -timeout                  HTTP request timeout (default: 10s)
-  -UA                       HTTP user agent
-
-OUTPUT OPTIONS:
-  -nC                       no color mode
-  -oJ                       JSON output file (default: ./sigurlscann3r.json)
-  -v                        verbose mode
+OPTIONS:
+   -c, --concurrency              concurrency level (default: 20)
+   -d, --delay                    delay between requests (default: 100ms)
+       --follow-redirects         follow redirects (default: false)
+       --follow-host-redirects    follow internal redirects i.e, same host redirects (default: false)
+       --http-proxy               HTTP Proxy URL
+  -iL, --input-list               input urls list
+  -nC, --no-color                 no color mode
+   -o, --output                   JSON output file (default: ./sigurlscann3r.json)
+   -t, --timeout                  HTTP request timeout (default: 10s)
+  -ua, --user-agent               HTTP user agent
+       --update-params            update params file
+   -v, --verbose                  verbose mode
 ```
 
 ## Contribution

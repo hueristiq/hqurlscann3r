@@ -60,7 +60,11 @@ func (sigurlscann3r *Sigurlx) initClient() error {
 func (sigurlscann3r *Sigurlx) DoHTTP(URL string) (Response, error) {
 	var response Response
 
-	res, err := sigurlscann3r.httpRequest(URL, http.MethodGet, sigurlscann3r.Client)
+	headers := map[string]string{
+		"User-Agent": sigurlscann3r.Options.UserAgent,
+	}
+
+	res, err := sigurlscann3r.httpRequest(http.MethodGet, URL, headers)
 	if err != nil {
 		return response, err
 	}
@@ -87,18 +91,20 @@ func (sigurlscann3r *Sigurlx) DoHTTP(URL string) (Response, error) {
 	return response, nil
 }
 
-func (sigurlscann3r *Sigurlx) httpRequest(URL string, method string, client *http.Client) (res *http.Response, err error) {
+func (sigurlscann3r *Sigurlx) httpRequest(method, URL string, headers map[string]string) (res *http.Response, err error) {
 	req, err := http.NewRequest(method, URL, nil)
 	if err != nil {
-		return res, err
+		return
 	}
 
-	req.Header.Set("User-Agent", sigurlscann3r.Options.UserAgent)
+	for header, value := range headers {
+		req.Header.Set(header, value)
+	}
 
-	res, err = client.Do(req)
+	res, err = sigurlscann3r.Client.Do(req)
 	if err != nil {
-		return res, err
+		return
 	}
 
-	return res, nil
+	return
 }

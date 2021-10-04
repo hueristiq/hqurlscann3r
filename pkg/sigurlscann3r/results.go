@@ -7,26 +7,32 @@ import (
 	"strings"
 )
 
-type CommonVulnParam struct {
-	Param string   `json:"param,omitempty"`
-	Risks []string `json:"risks,omitempty"`
+type ClietErrorBypass struct {
+	URL    string `json:"url,omitempty"`
+	Header string `json:"header,omitempty"`
 }
 
-type ReflectedParam struct {
+type ReflectedParameters struct {
 	Param      string   `json:"param,omitempty"`
 	Characters []string `json:"characters,omitempty"`
 }
 
+type CommonVulnerableParameters struct {
+	Param string   `json:"param,omitempty"`
+	Risks []string `json:"risks,omitempty"`
+}
+
 type Result struct {
-	URL              string            `json:"url,omitempty"`
-	Category         string            `json:"category,omitempty"`
-	StatusCode       int               `json:"status_code,omitempty"`
-	ContentType      string            `json:"content_type,omitempty"`
-	ContentLength    int               `json:"content_length,omitempty"`
-	RedirectLocation string            `json:"redirect_location,omitempty"`
-	CommonVulnParams []CommonVulnParam `json:"common_vuln_params,omitempty"`
-	ReflectedParams  []ReflectedParam  `json:"reflected_params,omitempty"`
-	DOM              []string          `json:"dom,omitempty"`
+	URL                        string                       `json:"url,omitempty"`
+	Category                   string                       `json:"category,omitempty"`
+	StatusCode                 int                          `json:"status_code,omitempty"`
+	ContentType                string                       `json:"content_type,omitempty"`
+	ContentLength              int                          `json:"content_length,omitempty"`
+	RedirectLocation           string                       `json:"redirect_location,omitempty"`
+	ClietErrorBypass           []ClietErrorBypass           `json:"cliet_errors_bypass,omitempty"`
+	ReflectedParameters        []ReflectedParameters        `json:"reflected_parameters,omitempty"`
+	CommonVulnerableParameters []CommonVulnerableParameters `json:"common_vulnerable_parameters,omitempty"`
+	DOM                        []string                     `json:"dom,omitempty"`
 }
 
 type Results []Result

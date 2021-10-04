@@ -7,6 +7,7 @@ import (
 	"net/url"
 	"strings"
 
+	"github.com/enenumxela/urlx/pkg/urlx"
 	"github.com/signedsecurity/sigurlscann3r/pkg/params"
 )
 
@@ -23,8 +24,8 @@ func (sigurlscann3r *Sigurlx) initParams() error {
 	return nil
 }
 
-func (sigurlscann3r *Sigurlx) CommonVulnParamsProbe(query url.Values) ([]CommonVulnParam, error) {
-	var commonVulnParams []CommonVulnParam
+func (sigurlscann3r *Sigurlx) CommonVulnParamsProbe(query url.Values) ([]CommonVulnerableParameters, error) {
+	var commonVulnParams []CommonVulnerableParameters
 
 	for parameter := range query {
 		for i := range sigurlscann3r.Params {
@@ -39,8 +40,8 @@ func (sigurlscann3r *Sigurlx) CommonVulnParamsProbe(query url.Values) ([]CommonV
 	return commonVulnParams, nil
 }
 
-func (sigurlscann3r *Sigurlx) ReflectedParamsProbe(parsedURL *url.URL, query url.Values, res Response) ([]ReflectedParam, error) {
-	var reflectedParams []ReflectedParam
+func (sigurlscann3r *Sigurlx) ReflectedParamsProbe(parsedURL *urlx.URL, query url.Values, res Response) ([]ReflectedParameters, error) {
+	var reflectedParams []ReflectedParameters
 
 	reflected, err := sigurlscann3r.checkReflection(parsedURL.String(), query, res)
 	if err != nil {
@@ -65,7 +66,7 @@ func (sigurlscann3r *Sigurlx) ReflectedParamsProbe(parsedURL *url.URL, query url
 			}
 
 			if len(reflectedCharacters) > 2 {
-				reflectedParams = append(reflectedParams, ReflectedParam{Param: parameter, Characters: reflectedCharacters})
+				reflectedParams = append(reflectedParams, ReflectedParameters{Param: parameter, Characters: reflectedCharacters})
 			}
 		}
 	}
@@ -122,7 +123,7 @@ func (sigurlscann3r *Sigurlx) checkReflection(URL string, query url.Values, res 
 	return reflected, nil
 }
 
-func (sigurlscann3r *Sigurlx) checkAppend(parsedURL *url.URL, query url.Values, param, suffix string) (bool, error) {
+func (sigurlscann3r *Sigurlx) checkAppend(parsedURL *urlx.URL, query url.Values, param, suffix string) (bool, error) {
 	val := query.Get(param)
 
 	query.Set(param, val+suffix)

@@ -2,15 +2,15 @@ package sigurlscann3r
 
 import (
 	"net/http"
-	"net/url"
 	"regexp"
 
+	"github.com/enenumxela/urlx/pkg/urlx"
 	"github.com/signedsecurity/sigurlscann3r/internal/configuration"
 )
 
 type Sigurlx struct {
 	Client       *http.Client
-	Params       []CommonVulnParam
+	Params       []CommonVulnerableParameters
 	Options      *configuration.Options
 	JSRegex      *regexp.Regexp
 	DOCRegex     *regexp.Regexp
@@ -34,7 +34,7 @@ func New(options *configuration.Options) (Sigurlx, error) {
 func (sigurlscann3r *Sigurlx) Process(URL string) (result Result, err error) {
 	var res Response
 
-	parsedURL, err := url.Parse(URL)
+	parsedURL, err := urlx.Parse(URL)
 	if err != nil {
 		return result, err
 	}
@@ -61,15 +61,21 @@ func (sigurlscann3r *Sigurlx) Process(URL string) (result Result, err error) {
 
 	if len(query) > 0 {
 		if result.Category == "endpoint" {
-			if result.CommonVulnParams, err = sigurlscann3r.CommonVulnParamsProbe(query); err != nil {
-				return result, err
-			}
-
 			if res.IsEmpty() {
 				res, _ = sigurlscann3r.DoHTTP(parsedURL.String())
 			}
 
-			if result.ReflectedParams, err = sigurlscann3r.ReflectedParamsProbe(parsedURL, query, res); err != nil {
+			if result.StatusCode == http.StatusForbidden {
+				if result.ClietErrorBypass, err = sigurlscann3r.bypass4xx(parsedURL); err != nil {
+					return result, err
+				}
+			}
+
+			if result.ReflectedParameters, err = sigurlscann3r.ReflectedParamsProbe(parsedURL, query, res); err != nil {
+				return result, err
+			}
+
+			if result.CommonVulnerableParameters, err = sigurlscann3r.CommonVulnParamsProbe(query); err != nil {
 				return result, err
 			}
 		}
