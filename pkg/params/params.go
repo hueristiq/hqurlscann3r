@@ -10,7 +10,7 @@ import (
 
 func File() (file string) {
 	userHomeDir, _ := os.UserHomeDir()
-	return userHomeDir + "/.sigurlscann3r/params.json"
+	return userHomeDir + "/.hqurlscann3r/params.json"
 }
 
 func UpdateOrDownload(file string) (err error) {
@@ -30,7 +30,7 @@ func UpdateOrDownload(file string) (err error) {
 	}
 	defer paramsFile.Close()
 
-	res, err := http.Get("https://raw.githubusercontent.com/signedsecurity/sigurlscann3r/main/static/params.json")
+	res, err := http.Get("https://raw.githubusercontent.com/hueristiq/hqurlscann3r/main/static/params.json")
 	if err != nil {
 		return err
 	}

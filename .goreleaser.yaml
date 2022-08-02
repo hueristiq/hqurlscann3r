@@ -4,8 +4,8 @@ before:
 
 builds:
     -
-        binary: sigurlscann3r
-        main: cmd/sigurlscann3r/main.go
+        binary: hqurlscann3r
+        main: cmd/hqurlscann3r/main.go
         goos:
             - linux
             - windows

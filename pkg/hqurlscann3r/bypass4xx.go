@@ -1,4 +1,4 @@
-package sigurlscann3r
+package hqurlscann3r
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"github.com/enenumxela/urlx/pkg/urlx"
 )
 
-func (sigurlscann3r *Sigurlx) bypass4xx(parsedURL *urlx.URL) ([]ClietErrorBypass, error) {
+func (hqurlscann3r *Sigurlx) bypass4xx(parsedURL *urlx.URL) ([]ClietErrorBypass, error) {
 	var clietErrorBypass []ClietErrorBypass
 
 	// Trim the trailing slash
@@ -62,7 +62,7 @@ func (sigurlscann3r *Sigurlx) bypass4xx(parsedURL *urlx.URL) ([]ClietErrorBypass
 	for _, bypass := range bypasses {
 		// time.Sleep(time.Duration(o.delay) * time.Millisecond)
 
-		res, err := sigurlscann3r.DoHTTP(bypass)
+		res, err := hqurlscann3r.DoHTTP(bypass)
 		if err != nil {
 			continue
 		}
@@ -75,7 +75,7 @@ func (sigurlscann3r *Sigurlx) bypass4xx(parsedURL *urlx.URL) ([]ClietErrorBypass
 	for j := 0; j < len(headers); j++ {
 		// time.Sleep(time.Duration(o.delay) * time.Millisecond)
 
-		res, err := sigurlscann3r.httpRequest(http.MethodGet, parsedURL.String(), map[string]string{headers[j][0]: headers[j][1]})
+		res, err := hqurlscann3r.httpRequest(http.MethodGet, parsedURL.String(), map[string]string{headers[j][0]: headers[j][1]})
 		if err != nil {
 			continue
 		}

@@ -1,4 +1,4 @@
-package sigurlscann3r
+package hqurlscann3r
 
 import (
 	"crypto/tls"
@@ -10,10 +10,10 @@ import (
 	"unicode/utf8"
 )
 
-func (sigurlscann3r *Sigurlx) initClient() error {
+func (hqurlscann3r *Sigurlx) initClient() error {
 	tr := &http.Transport{
 		DialContext: (&net.Dialer{
-			Timeout:   time.Duration(sigurlscann3r.Options.Timeout) * time.Second,
+			Timeout:   time.Duration(hqurlscann3r.Options.Timeout) * time.Second,
 			KeepAlive: time.Second,
 		}).DialContext,
 		TLSClientConfig: &tls.Config{
@@ -21,8 +21,8 @@ func (sigurlscann3r *Sigurlx) initClient() error {
 		},
 	}
 
-	if sigurlscann3r.Options.HTTPProxy != "" {
-		if proxyURL, err := url.Parse(sigurlscann3r.Options.HTTPProxy); err == nil {
+	if hqurlscann3r.Options.HTTPProxy != "" {
+		if proxyURL, err := url.Parse(hqurlscann3r.Options.HTTPProxy); err == nil {
 			tr.Proxy = http.ProxyURL(proxyURL)
 		}
 	}
@@ -31,11 +31,11 @@ func (sigurlscann3r *Sigurlx) initClient() error {
 		return http.ErrUseLastResponse
 	}
 
-	if sigurlscann3r.Options.FollowRedirects {
+	if hqurlscann3r.Options.FollowRedirects {
 		re = nil
 	}
 
-	if sigurlscann3r.Options.FollowHostRedirects {
+	if hqurlscann3r.Options.FollowHostRedirects {
 		re = func(redirectedRequest *http.Request, previousRequest []*http.Request) error {
 			newHost := redirectedRequest.URL.Host
 			oldHost := previousRequest[0].URL.Host
@@ -48,8 +48,8 @@ func (sigurlscann3r *Sigurlx) initClient() error {
 		}
 	}
 
-	sigurlscann3r.Client = &http.Client{
-		Timeout:       time.Duration(sigurlscann3r.Options.Timeout) * time.Second,
+	hqurlscann3r.Client = &http.Client{
+		Timeout:       time.Duration(hqurlscann3r.Options.Timeout) * time.Second,
 		Transport:     tr,
 		CheckRedirect: re,
 	}
@@ -57,14 +57,14 @@ func (sigurlscann3r *Sigurlx) initClient() error {
 	return nil
 }
 
-func (sigurlscann3r *Sigurlx) DoHTTP(URL string) (Response, error) {
+func (hqurlscann3r *Sigurlx) DoHTTP(URL string) (Response, error) {
 	var response Response
 
 	headers := map[string]string{
-		"User-Agent": sigurlscann3r.Options.UserAgent,
+		"User-Agent": hqurlscann3r.Options.UserAgent,
 	}
 
-	res, err := sigurlscann3r.httpRequest(http.MethodGet, URL, headers)
+	res, err := hqurlscann3r.httpRequest(http.MethodGet, URL, headers)
 	if err != nil {
 		return response, err
 	}
@@ -91,7 +91,7 @@ func (sigurlscann3r *Sigurlx) DoHTTP(URL string) (Response, error) {
 	return response, nil
 }
 
-func (sigurlscann3r *Sigurlx) httpRequest(method, URL string, headers map[string]string) (res *http.Response, err error) {
+func (hqurlscann3r *Sigurlx) httpRequest(method, URL string, headers map[string]string) (res *http.Response, err error) {
 	req, err := http.NewRequest(method, URL, nil)
 	if err != nil {
 		return
@@ -101,7 +101,7 @@ func (sigurlscann3r *Sigurlx) httpRequest(method, URL string, headers map[string
 		req.Header.Set(header, value)
 	}
 
-	res, err = sigurlscann3r.Client.Do(req)
+	res, err = hqurlscann3r.Client.Do(req)
 	if err != nil {
 		return
 	}

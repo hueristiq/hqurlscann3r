@@ -9,10 +9,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/hueristiq/hqurlscann3r/internal/configuration"
+	"github.com/hueristiq/hqurlscann3r/pkg/hqurlscann3r"
+	"github.com/hueristiq/hqurlscann3r/pkg/params"
 	"github.com/logrusorgru/aurora/v3"
-	"github.com/signedsecurity/sigurlscann3r/internal/configuration"
-	"github.com/signedsecurity/sigurlscann3r/pkg/params"
-	"github.com/signedsecurity/sigurlscann3r/pkg/sigurlscann3r"
 )
 
 type options struct {
@@ -54,8 +54,8 @@ func init() {
 	// output options
 	flag.BoolVar(&co.noColor, "nC", false, "")
 	flag.BoolVar(&co.noColor, "no-color", false, "")
-	flag.StringVar(&co.output, "o", "./sigurlscann3r.json", "")
-	flag.StringVar(&co.output, "output", "./sigurlscann3r.json", "")
+	flag.StringVar(&co.output, "o", "./hqurlscann3r.json", "")
+	flag.StringVar(&co.output, "output", "./hqurlscann3r.json", "")
 	flag.BoolVar(&co.verbose, "v", false, "")
 	flag.BoolVar(&co.verbose, "verbose", false, "")
 
@@ -63,7 +63,7 @@ func init() {
 		banner()
 
 		h := "USAGE:\n"
-		h += "  sigurlscann3r [OPTIONS]\n"
+		h += "  hqurlscann3r [OPTIONS]\n"
 
 		h += "\nOPTIONS:\n"
 		h += "   -c, --concurrency              concurrency level (default: 20)\n"
@@ -73,7 +73,7 @@ func init() {
 		h += "       --http-proxy               HTTP Proxy URL\n"
 		h += "  -iL, --input-list               input urls list\n"
 		h += "  -nC, --no-color                 no color mode\n"
-		h += "   -o, --output                   JSON output file (default: ./sigurlscann3r.json)\n"
+		h += "   -o, --output                   JSON output file (default: ./hqurlscann3r.json)\n"
 		h += "   -t, --timeout                  HTTP request timeout (default: 10s)\n"
 		h += "  -ua, --user-agent               HTTP user agent\n"
 		h += "       --update-params            update params file\n"
@@ -120,7 +120,7 @@ func main() {
 				log.Fatalln(err)
 			}
 		default:
-			log.Fatalln("sigurlscann3r takes input from stdin or file using '-d' flag")
+			log.Fatalln("hqurlscann3r takes input from stdin or file using '-d' flag")
 		}
 
 		scanner := bufio.NewScanner(f)
@@ -141,7 +141,7 @@ func main() {
 	mutex := &sync.Mutex{}
 	wg := &sync.WaitGroup{}
 
-	var output sigurlscann3r.Results
+	var output hqurlscann3r.Results
 
 	for i := 0; i < co.concurrency; i++ {
 		wg.Add(1)
@@ -151,7 +151,7 @@ func main() {
 		go func() {
 			defer wg.Done()
 
-			runner, err := sigurlscann3r.New(&ro)
+			runner, err := hqurlscann3r.New(&ro)
 			if err != nil {
 				log.Fatalln(err)
 			}

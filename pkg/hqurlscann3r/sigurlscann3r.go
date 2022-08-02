@@ -1,11 +1,11 @@
-package sigurlscann3r
+package hqurlscann3r
 
 import (
 	"net/http"
 	"regexp"
 
 	"github.com/enenumxela/urlx/pkg/urlx"
-	"github.com/signedsecurity/sigurlscann3r/internal/configuration"
+	"github.com/hueristiq/hqurlscann3r/internal/configuration"
 )
 
 type Sigurlx struct {
@@ -22,16 +22,16 @@ type Sigurlx struct {
 }
 
 func New(options *configuration.Options) (Sigurlx, error) {
-	sigurlscann3r := Sigurlx{}
-	sigurlscann3r.Options = options
-	sigurlscann3r.initCategories()
-	sigurlscann3r.initParams()
-	sigurlscann3r.initClient()
+	hqurlscann3r := Sigurlx{}
+	hqurlscann3r.Options = options
+	hqurlscann3r.initCategories()
+	hqurlscann3r.initParams()
+	hqurlscann3r.initClient()
 
-	return sigurlscann3r, nil
+	return hqurlscann3r, nil
 }
 
-func (sigurlscann3r *Sigurlx) Process(URL string) (result Result, err error) {
+func (hqurlscann3r *Sigurlx) Process(URL string) (result Result, err error) {
 	var res Response
 
 	parsedURL, err := urlx.Parse(URL)
@@ -41,11 +41,11 @@ func (sigurlscann3r *Sigurlx) Process(URL string) (result Result, err error) {
 
 	result.URL = parsedURL.String()
 
-	if result.Category, err = sigurlscann3r.categorize(URL); err != nil {
+	if result.Category, err = hqurlscann3r.categorize(URL); err != nil {
 		return result, err
 	}
 
-	if res, err = sigurlscann3r.DoHTTP(parsedURL.String()); err != nil {
+	if res, err = hqurlscann3r.DoHTTP(parsedURL.String()); err != nil {
 		return result, err
 	}
 
@@ -62,20 +62,20 @@ func (sigurlscann3r *Sigurlx) Process(URL string) (result Result, err error) {
 	if len(query) > 0 {
 		if result.Category == "endpoint" {
 			if res.IsEmpty() {
-				res, _ = sigurlscann3r.DoHTTP(parsedURL.String())
+				res, _ = hqurlscann3r.DoHTTP(parsedURL.String())
 			}
 
 			if result.StatusCode == http.StatusForbidden {
-				if result.ClietErrorBypass, err = sigurlscann3r.bypass4xx(parsedURL); err != nil {
+				if result.ClietErrorBypass, err = hqurlscann3r.bypass4xx(parsedURL); err != nil {
 					return result, err
 				}
 			}
 
-			if result.ReflectedParameters, err = sigurlscann3r.ReflectedParamsProbe(parsedURL, query, res); err != nil {
+			if result.ReflectedParameters, err = hqurlscann3r.ReflectedParamsProbe(parsedURL, query, res); err != nil {
 				return result, err
 			}
 
-			if result.CommonVulnerableParameters, err = sigurlscann3r.CommonVulnParamsProbe(query); err != nil {
+			if result.CommonVulnerableParameters, err = hqurlscann3r.CommonVulnParamsProbe(query); err != nil {
 				return result, err
 			}
 		}

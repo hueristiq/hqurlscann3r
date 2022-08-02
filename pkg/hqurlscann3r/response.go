@@ -1,4 +1,4 @@
-package sigurlscann3r
+package hqurlscann3r
 
 import (
 	"reflect"
