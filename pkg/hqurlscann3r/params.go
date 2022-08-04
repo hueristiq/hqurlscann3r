@@ -4,11 +4,11 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
-	"net/url"
+	urlz "net/url"
 	"strings"
 
-	"github.com/enenumxela/urlx/pkg/urlx"
 	"github.com/hueristiq/hqurlscann3r/pkg/params"
+	"github.com/hueristiq/url"
 )
 
 func (hqurlscann3r *Sigurlx) initParams() error {
@@ -24,7 +24,7 @@ func (hqurlscann3r *Sigurlx) initParams() error {
 	return nil
 }
 
-func (hqurlscann3r *Sigurlx) CommonVulnParamsProbe(query url.Values) ([]CommonVulnerableParameters, error) {
+func (hqurlscann3r *Sigurlx) CommonVulnParamsProbe(query urlz.Values) ([]CommonVulnerableParameters, error) {
 	var commonVulnParams []CommonVulnerableParameters
 
 	for parameter := range query {
@@ -40,7 +40,7 @@ func (hqurlscann3r *Sigurlx) CommonVulnParamsProbe(query url.Values) ([]CommonVu
 	return commonVulnParams, nil
 }
 
-func (hqurlscann3r *Sigurlx) ReflectedParamsProbe(parsedURL *urlx.URL, query url.Values, res Response) ([]ReflectedParameters, error) {
+func (hqurlscann3r *Sigurlx) ReflectedParamsProbe(parsedURL *url.URL, query urlz.Values, res Response) ([]ReflectedParameters, error) {
 	var reflectedParams []ReflectedParameters
 
 	reflected, err := hqurlscann3r.checkReflection(parsedURL.String(), query, res)
@@ -74,20 +74,20 @@ func (hqurlscann3r *Sigurlx) ReflectedParamsProbe(parsedURL *urlx.URL, query url
 	return reflectedParams, nil
 }
 
-func getQuery(URL string) (url.Values, error) {
-	var query url.Values
+func getQuery(URL string) (urlz.Values, error) {
+	var query urlz.Values
 
-	queryUnescaped, err := url.QueryUnescape(URL)
+	queryUnescaped, err := urlz.QueryUnescape(URL)
 	if err != nil {
 		return query, err
 	}
 
-	parsedURL, err := url.Parse(queryUnescaped)
+	parsedURL, err := urlz.Parse(queryUnescaped)
 	if err != nil {
 		return query, err
 	}
 
-	query, err = url.ParseQuery(parsedURL.RawQuery)
+	query, err = urlz.ParseQuery(parsedURL.RawQuery)
 	if err != nil {
 		return query, err
 	}
@@ -95,7 +95,7 @@ func getQuery(URL string) (url.Values, error) {
 	return query, nil
 }
 
-func (hqurlscann3r *Sigurlx) checkReflection(URL string, query url.Values, res Response) ([]string, error) {
+func (hqurlscann3r *Sigurlx) checkReflection(URL string, query urlz.Values, res Response) ([]string, error) {
 	var reflected []string
 
 	if res.IsEmpty() {
@@ -123,7 +123,7 @@ func (hqurlscann3r *Sigurlx) checkReflection(URL string, query url.Values, res R
 	return reflected, nil
 }
 
-func (hqurlscann3r *Sigurlx) checkAppend(parsedURL *urlx.URL, query url.Values, param, suffix string) (bool, error) {
+func (hqurlscann3r *Sigurlx) checkAppend(parsedURL *url.URL, query urlz.Values, param, suffix string) (bool, error) {
 	val := query.Get(param)
 
 	query.Set(param, val+suffix)

@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/enenumxela/urlx/pkg/urlx"
+	"github.com/hueristiq/url"
 )
 
-func (hqurlscann3r *Sigurlx) bypass4xx(parsedURL *urlx.URL) ([]ClietErrorBypass, error) {
+func (hqurlscann3r *Sigurlx) bypass4xx(parsedURL *url.URL) ([]ClietErrorBypass, error) {
 	var clietErrorBypass []ClietErrorBypass
 
 	// Trim the trailing slash

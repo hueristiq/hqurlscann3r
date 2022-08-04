@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"regexp"
 
-	"github.com/enenumxela/urlx/pkg/urlx"
 	"github.com/hueristiq/hqurlscann3r/internal/configuration"
+	"github.com/hueristiq/url"
 )
 
 type Sigurlx struct {
@@ -34,7 +34,7 @@ func New(options *configuration.Options) (Sigurlx, error) {
 func (hqurlscann3r *Sigurlx) Process(URL string) (result Result, err error) {
 	var res Response
 
-	parsedURL, err := urlx.Parse(URL)
+	parsedURL, err := url.Parse(url.Options{URL: URL})
 	if err != nil {
 		return result, err
 	}
